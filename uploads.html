@@ -120,7 +120,7 @@
         <a href="/dashboard">Dashboard</a>
         <a href="/analytics">Analytics</a>
         <a href="/map">Map View</a>
-        <a href="/manual_control">Manual Control</a> <!-- Manual Control Tab -->
+        <a href="/manual_control">Manual Control</a>
     </div>
 
     <!-- Main Content -->
@@ -137,16 +137,15 @@
                 </tr>
             </thead>
             <tbody>
-                {% for file in files %}
+                <!-- Replace with Static Content -->
                 <tr>
-                    <td><a href="{{ url_for('uploaded_file', filename=file) }}">{{ file }}</a></td>
-                    <td>
-                        <form action="/delete/{{ file }}" method="POST" style="display:inline;">
-                            <button class="button" type="submit">Delete</button>
-                        </form>
-                    </td>
+                    <td><a href="#">example_video_1.mp4</a></td>
+                    <td><button class="button" type="button">Delete</button></td>
                 </tr>
-                {% endfor %}
+                <tr>
+                    <td><a href="#">example_video_2.mp4</a></td>
+                    <td><button class="button" type="button">Delete</button></td>
+                </tr>
             </tbody>
         </table>
     </div>
