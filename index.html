@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Traffic Management System - Manage and analyze traffic data with ease.">
     <title>Traffic Management System</title>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         /* General Styles */
         body, html {
@@ -12,7 +15,7 @@
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
-            display: flex; /* Flexbox for layout */
+            display: flex;
         }
 
         /* Sidebar Styles */
@@ -25,29 +28,42 @@
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         }
 
+        .sidebar h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
         .sidebar a {
             display: block;
             color: #ffffff; /* White Text */
-            padding: 10px 15px;
+            padding: 12px 15px;
             text-decoration: none;
             font-size: 18px;
+            border-radius: 5px;
             transition: background 0.3s ease;
+            margin-bottom: 10px; /* Space between links */
         }
 
         .sidebar a:hover {
             background-color: #ff4c4c; /* Red Hover Effect */
         }
 
-        /* Main Content */
+        /* Active Link Styles */
+        .sidebar .active {
+            background-color: #ff4c4c; /* Red Background for Active Link */
+        }
+
+        /* Main Content Styles */
         .main-content {
             margin-left: 270px; /* Leave space for sidebar */
-            padding: 20px;
+            padding: 40px 20px;
             width: calc(100% - 270px); /* Adjust width */
         }
 
         h1 {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 30px;
             color: #0056b3; /* Primary Blue */
             font-size: 2.5em;
         }
@@ -67,6 +83,12 @@
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h2 {
+            text-align: center;
+            color: #0056b3;
+            font-size: 1.8em;
         }
 
         /* Button Styles */
@@ -95,24 +117,24 @@
             padding: 20px;
             background-color: #333333; /* Black Footer */
             color: #ffffff;
-            position: fixed;
-            width: 100%;
+            position: absolute;
+            width: calc(100% - 270px);
+            left: 270px;
             bottom: 0;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
         }
     </style>
-    <!-- Import Poppins Font from Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Sidebar Navigation -->
     <div class="sidebar">
-        <h2 style="color: white;">Menu</h2>
-        <a href="/">Home</a>
+        <h2>Menu</h2>
+        <a href="/" class="active">Home</a> <!-- Highlighting Home as the active link -->
         <a href="/uploads">Uploaded Videos</a>
         <a href="/dashboard">Dashboard</a>
         <a href="/analytics">Analytics</a>
         <a href="/map">Map View</a>
-        <a href="/manual_control">Manual Control</a> <!-- Added Manual Control Tab -->
+        <a href="/manual_control">Manual Control</a> <!-- Manual Control Tab -->
     </div>
 
     <!-- Main Content -->
@@ -120,18 +142,18 @@
         <!-- Main Heading -->
         <h1>Welcome to the Traffic Management System</h1>
 
-        <!-- Card for Introduction and Actions -->
+        <!-- Introduction and Actions Card -->
         <div class="card">
             <h2>Get Started</h2>
             <p>This system helps you manage traffic signals efficiently and analyze traffic flow through uploaded video data.</p>
             <a href="/uploads" class="button">Upload Videos</a>
             <a href="/dashboard" class="button">Go to Dashboard</a>
         </div>
-
-        <!-- Footer -->
-        <footer>
-            © 2024 Traffic Management System | All rights reserved.
-        </footer>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2024 Traffic Management System | All rights reserved.
+    </footer>
 </body>
 </html>
