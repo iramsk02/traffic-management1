@@ -3,84 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Uploaded Videos - Manage and view your uploaded traffic videos.">
     <title>Uploaded Videos</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* General Styles */
+        body, html {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: #f4f4f4;
             color: #333;
-            margin: 0;
-            padding: 20px;
+            display: flex;
         }
 
-        nav {
-            background-color: #007bff;
-            overflow: hidden;
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background-color: #0056b3; /* Primary Blue */
+            padding: 15px;
+            height: 100vh;
+            position: fixed;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         }
 
-        nav a {
-            float: left;
-            display: block;
+        .sidebar h2 {
             color: white;
             text-align: center;
-            padding: 14px 16px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #ffffff; /* White Text */
+            padding: 12px 15px;
             text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            margin-bottom: 10px; /* Space between links */
         }
 
-        nav a:hover {
-            background-color: #0056b3;
+        .sidebar a:hover {
+            background-color: #ff4c4c; /* Red Hover Effect */
         }
 
-        nav a.active {
-            background-color: #0056b3;
+        /* Active Link Styles */
+        .sidebar .active {
+            background-color: #ff4c4c; /* Red Background for Active Link */
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-left: 270px; /* Leave space for sidebar */
+            padding: 40px 20px;
+            width: calc(100% - 270px); /* Adjust width */
         }
 
         h1 {
-            color: #007bff;
+            text-align: center;
+            color: #0056b3; /* Primary Blue */
+            font-size: 2em;
+            margin-bottom: 30px;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
+        /* Uploaded Videos List Styles */
+        .videos-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
         }
 
-        li {
-            margin: 10px 0;
+        .videos-table th, .videos-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
         }
 
-        button {
-            background-color: #ff0000;
+        .videos-table th {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .videos-table td {
+            background-color: #ffffff;
+        }
+
+        .videos-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .button {
+            background-color: #ff0000; /* Red Button */
             color: white;
             border: none;
-            padding: 5px 10px;
+            padding: 8px 16px;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
         }
 
-        button:hover {
-            background-color: #cc0000;
+        .button:hover {
+            background-color: #cc0000; /* Darker Red on Hover */
         }
+
     </style>
 </head>
 <body>
-    <nav>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <h2>Menu</h2>
         <a href="/">Home</a>
         <a href="/uploads" class="active">Uploaded Videos</a>
         <a href="/dashboard">Dashboard</a>
         <a href="/analytics">Analytics</a>
-        <a href="/map">Map</a>
-        <a href="/manual_control">Manual Control</a>
-    </nav>
-    <h1>Uploaded Videos</h1>
-    <ul>
-        {% for file in files %}
-            <li>
-                <a href="{{ url_for('uploaded_file', filename=file) }}">{{ file }}</a>
-                <form action="/delete/{{ file }}" method="POST" style="display:inline;">
-                    <button type="submit">Delete</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
+        <a href="/map">Map View</a>
+        <a href="/manual_control">Manual Control</a> <!-- Manual Control Tab -->
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Page Heading -->
+        <h1>Uploaded Videos</h1>
+
+        <!-- Uploaded Videos List -->
+        <table class="videos-table">
+            <thead>
+                <tr>
+                    <th>Video Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for file in files %}
+                <tr>
+                    <td><a href="{{ url_for('uploaded_file', filename=file) }}">{{ file }}</a></td>
+                    <td>
+                        <form action="/delete/{{ file }}" method="POST" style="display:inline;">
+                            <button class="button" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
